@@ -8,7 +8,7 @@ import pandas as pd
 st.set_page_config(page_title="Upload Files", page_icon="⬆️")
 menu = st.sidebar.selectbox("Choose an option:", ["Upload CSV and edit", "Upload Image", "Upload Video", "Upload Audio"])
 
-if menu == "Upload CSV":
+if menu == "Upload CSV and edit":
     uploadcsv = st.file_uploader("Upload CSV File:", type="csv")
 
     if uploadcsv:
