@@ -30,13 +30,13 @@ if menu == "Upload CSV and edit":
         if selectoperator == "Average":
             ave_op = readcsv[selectcolumns].mean().reset_index()
             st.table(ave_op)
-            if selectchart == "Bar Chart":
+            if selectchart == "Bar chart":
                 barchart = px.bar(ave_op, x = "index", y=0, labels = {"index": "Subject","0":"Average"})
-                st.plotly_chart(ave_op, x="index", y=0)
+                st.plotly_chart(barchart, x="index", y=0)
         
-        elif selectchart == "Pie Chart":
-            piechart = px.pie(ave_op, names = "index", values = 0, labels = {"index": "Subject","0":"Average"})
-            st.plotly_chart(piechart)
+            elif selectchart == "Pie Chart":
+                piechart = px.pie(ave_op, names = "index", values = 0, labels = {"index": "Subject","0":"Average"})
+                st.plotly_chart(piechart)
                
 if menu == "Upload Image":
     uploadimage = st.file_uploader("Upload Image File:", type=["jpg", "jpeg", "png"])
