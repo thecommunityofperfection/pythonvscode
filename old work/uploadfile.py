@@ -22,7 +22,7 @@ if menu == "Upload CSV and edit":
     selectcolumns = st.multiselect("Choose columns to plot", readcsvcolumns)
     col1, col2 = st.columns(2)
     with col1:
-        selectchart = st.radio("Choose Chart to plot",["Bar chart", "Pie Chart"], horizontal = True)
+        selectchart = st.radio("Choose Chart to plot",["Bar Chart", "Pie Chart"], horizontal = True)
     with col2:
         selectoperator = st.radio("Choose Stats Operator",["Average", "Sum", "Count"], horizontal = True)
 
@@ -30,7 +30,7 @@ if menu == "Upload CSV and edit":
         if selectoperator == "Average":
             ave_op = readcsv[selectcolumns].mean().reset_index()
             st.table(ave_op)
-            if selectchart == "Bar chart":
+            if selectchart == "Bar Chart":
                 barchart = px.bar(ave_op, x = "index", y=0, labels = {"index": "Subject","0":"Average"})
                 st.plotly_chart(barchart, x="index", y=0)
         

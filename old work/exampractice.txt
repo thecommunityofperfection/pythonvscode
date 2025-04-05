@@ -1,0 +1,43 @@
+Exam A
+1. 
+    a:error
+    b:float
+    c:integer
+    d:boolean
+    e:string
+2. 
+    interpretation
+3. 
+    depth = int(input( "Enter Immersion Depth:" ))
+4. 
+    syntax
+5. 
+    print(x, y, sep=";")
+6. 
+    b, c
+7. 
+    c
+    a
+    b
+8. 
+    1
+9. 
+    1
+10. 
+    for number in range(-2, 3, 2)
+11. 
+    zero
+12. 
+    if temperature == 0.0
+13. 
+    ***
+14. 
+    The program enters an infinite loop
+15. 
+    b, c
+16. 
+
+17. 
+    The code is errorneous and cannot be run
+18. 
+    
