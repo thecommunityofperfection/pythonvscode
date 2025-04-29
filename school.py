@@ -56,7 +56,7 @@ if menu == "Registration":
                     
                     with open(studentID + ".png", "wb") as writepic:
                         writepic.write(uploadpfp.getbuffer())
-                    st.sucess("Saved Student Information!")
+                    st.success("Saved Student Information!")
                 else:
                     st.error("Upload student picture first & Fill all details!")
 
@@ -81,23 +81,32 @@ if menu == "View Student Info":
             getParentContact = finduser["Parent Contact"].iloc[0]
             getRelationship = finduser["Parent Relationship"].iloc[0]
             getEmergency = finduser["Emergency Contact"].iloc[0]
+            l1, l2 = st.columns(2)
+            with l1:
+                st.title(f" :red[{getName}]")
+            with l2:
+                st.image(sImage)
+            st.write()
             side1, side2 = st.columns(2)
-            st.image(sImage)
-            st.title(getName)
             with side1:
-                st.subheader("Student Info")
-                st.divider()
-                st.write("User ID: ", getUserID)
-                st.write("Gender: ", getGender)
-                st.write("Birth Date: ", getBirthday)
-                st.write("Email: ", getEmail)
+                with st.form("col1"):
+                    st.subheader("Student Info")
+                    st.divider()
+                    st.write("User ID: ", getUserID)
+                    st.write("Gender: ", getGender)
+                    st.write("Birth Date: ", getBirthday)
+                    st.write("Email: ", getEmail)
+                    if st.form_submit_button(""):
+                        pass
             with side2:
-                st.subheader("Parent Info")
-                st.divider()
-                st.write("Parent/Guardian: ", getParent)
-                st.write("Parent Contact: ", getParentContact)
-                st.write("Relationship: ", getRelationship)
-                st.write("Emergency Contact: ", getEmergency)
+                with st.form("col2"):
+                    st.subheader("Parent Info")
+                    st.divider()
+                    st.write("Parent/Guardian: ", getParent)
+                    st.write("Parent Contact: ", getParentContact)
+                    st.write("Relationship: ", getRelationship)
+                    st.write("Emergency Contact: ", getEmergency)
+                    if st.form_submit_button(""):
+                            pass
         else: 
             st.sidebar.error("Incorrect Password")
-        #classwork: what happens if a user enters a capital letter inside
