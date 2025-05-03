@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import webbrowser
+import plotly.express as px
+
 st.set_page_config(page_title = "Video Hub", page_icon = "▶️")
 menu = st.sidebar.selectbox("Menu", ["Video Categories", "Video Ratings"])
 try:   
@@ -35,10 +37,10 @@ if menu == "Video Categories":
             if st.button(label = "Play Video", key = "1"):
                 webbrowser.open("https://www.youtube.com/watch?v=-QHff5pRdM8")
                 try:
-                    videoviews.loc[0,"How To classitfy circles"] += 1
+                    videoviews.loc[0,"How To classify circles"] += 1
                     videoviews.to_csv("videosviews.csv",index = False)
                 except KeyError:
-                    videoviews.loc[0,"How To classitfy circles"] = 1
+                    videoviews.loc[0,"How To classify circles"] = 1
                     videoviews.to_csv("videosviews.csv",index = False)
 
 
@@ -147,7 +149,8 @@ if menu == "Video Categories":
             st.image("https://i.ytimg.com/vi/1z2gp8lePbI/maxresdefault.jpg")
             st.write("Best dunks of all time")
             if st.button(label = "Play Video", key = "9"):
-                webbrowser.open("https://www.youtube.com/watch?v=1z2gp8lePbI")try:
+                webbrowser.open("https://www.youtube.com/watch?v=1z2gp8lePbI")
+                try:
                     videoviews.loc[0,"Best dunks of all time"] += 1
                     videoviews.to_csv("videosviews.csv",index = False)
                 except KeyError:
@@ -173,7 +176,7 @@ if menu == "Video Categories":
                     videoviews.loc[0,"Red Sox Vs. Orioles"] += 1
                     videoviews.to_csv("videosviews.csv",index = False)
                 except KeyError:
-                    videoviews.loc[0,""] = 1
+                    videoviews.loc[0,"Red Sox Vs. Orioles"] = 1
                     videoviews.to_csv("videosviews.csv",index = False)
         with s4:
             st.image("https://vcptennis.com/wp-content/uploads/2023/11/EPIC-Novak-Djokovic-vs-Jannik-Sinner-Match-Highlights-Nitto-1140x694.jpg")
@@ -294,3 +297,9 @@ if menu == "Video Categories":
                 except KeyError:
                     videoviews.loc[0,"Learn about religions"] = 1
                     videoviews.to_csv("videosviews.csv",index = False)
+
+if menu == "Video Ratings":
+    st.table(videoviews)
+    melt_tables = videoviews.melt(var_name="Video Title", value_name="Views")
+    plotbar = px.bar(melt_tables, x = "Video Title", y = "Views")
+    st.plotly_chart(plotbar)
