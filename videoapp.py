@@ -8,7 +8,7 @@ menu = st.sidebar.selectbox("Menu", ["Video Categories", "Video Ratings"])
 try:   
     videoviews = pd.read_csv("videoviews.csv")
 except:
-    videoviews = pd.DataFrame("vidoeviews.csv")
+    videoviews = pd.DataFrame()
 
 
 
@@ -31,17 +31,16 @@ if menu == "Video Categories":
 
 
         with e1:
-            vid1 = 0
             st.image("https://th.bing.com/th/id/R.79d5abac40a65c765a9cf7d91df243d7?rik=u5rHeN6Q2X0yHQ&pid=ImgRaw&r=0")
             st.write("How to classify circles")
             if st.button(label = "Play Video", key = "1"):
                 webbrowser.open("https://www.youtube.com/watch?v=-QHff5pRdM8")
                 try:
                     videoviews.loc[0,"How To classify circles"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"How To classify circles"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
 
 
         with e2:
@@ -51,10 +50,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=g1Od5idlo_k")
                 try:
                     videoviews.loc[0,"Learn about shapes"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Learn about shapes"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with e3:
             st.image("https://th.bing.com/th/id/OIP.bkfc7qadbmlsSdax6fIwJAAAAA?rs=1&pid=ImgDetMain")
             st.write("How to measure a circle")
@@ -62,10 +61,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://youtu.be/D4nGkWOPb6M")
                 try:
                     videoviews.loc[0,"How to measure a circle"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"How to measure a circle"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with e4:
             st.image("https://i.ytimg.com/vi/e2JMt_YJveM/maxresdefault.jpg")
             st.write("What are clouds?")
@@ -73,10 +72,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://youtu.be/e2JMt_YJveM")
                 try:
                     videoviews.loc[0,"What are clouds?"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"What are clouds?"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
 
     if categories == "All" or categories == "Animals":
         st.subheader("Animals Category")
@@ -96,10 +95,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=r1hpXoACWiI")
                 try:
                     videoviews.loc[0,"Wild Africa"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Wild Africa"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with a2:
             st.image("https://i.ytimg.com/vi/s3Kzt5_Jixg/maxresdefault.jpg")
             st.write("Polar")
@@ -107,10 +106,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=s3Kzt5_Jixg")
                 try:
                     videoviews.loc[0,"Polar"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Polar"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with a3:
             st.image("https://i.ytimg.com/vi/nywsA8wCCfY/maxresdefault.jpg")
             st.write("360° Antarctica")
@@ -118,10 +117,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=nywsA8wCCfY")
                 try:
                     videoviews.loc[0,"360° Antarctica"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"360° Antarctica"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with a4:
             st.image("https://i.ytimg.com/vi/8gh996lWwfU/maxresdefault.jpg")
             st.write("Mountain Wildlife")
@@ -129,10 +128,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=8gh996lWwfU")
                 try:
                     videoviews.loc[0,"Mountain Wildlife"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Mountain Wildlife"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
 
     if categories == "All" or categories == "Sports":
         st.subheader("Sports Category")
@@ -152,10 +151,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=1z2gp8lePbI")
                 try:
                     videoviews.loc[0,"Best dunks of all time"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Best dunks of all time"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with s2:
             st.image("https://i.ytimg.com/vi/lrA_9Lx-0nU/maxresdefault.jpg")
             st.write("Liverpool Vs. Chelsea")
@@ -163,10 +162,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=lrA_9Lx-0nU")
                 try:
                     videoviews.loc[0,"Liverpool Vs. Chelsea"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Liverpool Vs. Chelsea"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with s3:
             st.image("https://i.ytimg.com/vi/qr7a1flcf8E/maxresdefault.jpg")
             st.write("Red Sox Vs. Orioles")
@@ -174,10 +173,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=qr7a1flcf8E")
                 try:
                     videoviews.loc[0,"Red Sox Vs. Orioles"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Red Sox Vs. Orioles"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with s4:
             st.image("https://vcptennis.com/wp-content/uploads/2023/11/EPIC-Novak-Djokovic-vs-Jannik-Sinner-Match-Highlights-Nitto-1140x694.jpg")
             st.write("Novak Djokovic Vs. Jannik Sinner")
@@ -202,10 +201,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=s7Oq8_9QlHQ")
                 try:
                     videoviews.loc[0,"Black holes"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Black holes"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with p2:
             st.image("https://th.bing.com/th/id/OIP.nCq07TL3xc5X8orOsrtvsgHaEK?rs=1&pid=ImgDetMain")
             st.write("All about the sun")
@@ -213,10 +212,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=VkW54j82e9U")
                 try:
                     videoviews.loc[0,"All about the sun"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"All about the sun"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with p3:
             st.image("https://th.bing.com/th/id/R.e7c496a735e0cae05196b0459b6b35eb?rik=cqMFYxp1cUbKcw&riu=http%3a%2f%2fi.ytimg.com%2fvi%2fYa38Ie20XxA%2fmaxresdefault.jpg&ehk=fLZDDJI%2bXx2WEYv36IbjfgOmEfIglK0KwnKpQWTNkwk%3d&risl=&pid=ImgRaw&r=0")
             st.write("Images from space")
@@ -224,10 +223,10 @@ if menu == "Video Categories":
                 webbrowser.open("http://www.youtube.com/watch?v=Ya38Ie20XxA")
                 try:
                     videoviews.loc[0,"Images from space"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Images from space"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with p4:
             st.image("https://i.ytimg.com/vi/adKrNga8-Qs/maxresdefault.jpg")
             st.write("All about constellations for kids")
@@ -236,10 +235,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=adKrNga8-Qs-")
                 try:
                     videoviews.loc[0,"All about constellations for kids"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"All about constellations for kids"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
 
     if categories == "All" or categories == "Religion":
         st.subheader("Religion Category")
@@ -259,10 +258,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=3TT-ScMkbRc")
                 try:
                     videoviews.loc[0,"Top 10 biggest religions"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Top 10 biggest religions"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with r2:
             st.image("https://i.ytimg.com/vi/VtQ9x6rKvoY/maxresdefault.jpg")
             st.write("World religion day")
@@ -270,10 +269,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=VtQ9x6rKvoY")
                 try:
                     videoviews.loc[0,"World religion day"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"World religion day"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with r3:
             st.image("https://i.ytimg.com/vi/ge071m9bGeY/maxresdefault.jpg")
             st.write('Evolution of religion')
@@ -282,10 +281,10 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=ge071m9bGeY")
                 try:
                     videoviews.loc[0,"Evolution of religion"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Evolution of religion"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
         with r4:
             st.image("https://i.ytimg.com/vi/TA8pefvKJjA/maxresdefault.jpg")
             st.write("Learn about religions")
@@ -293,13 +292,18 @@ if menu == "Video Categories":
                 webbrowser.open("https://www.youtube.com/watch?v=TA8pefvKJjA")
                 try:
                     videoviews.loc[0,"Learn about religions"] += 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
                 except KeyError:
                     videoviews.loc[0,"Learn about religions"] = 1
-                    videoviews.to_csv("videosviews.csv",index = False)
+                    videoviews.to_csv("videoviews.csv",index = False)
 
 if menu == "Video Ratings":
-    st.table(videoviews)
+    #st.table(videoviews)
     melt_tables = videoviews.melt(var_name="Video Title", value_name="Views")
     plotbar = px.bar(melt_tables, x = "Video Title", y = "Views")
-    st.plotly_chart(plotbar)
+    plotpie = px.pie(melt_tables, names = "Video Title", values = "Views")
+    chart = st.radio("Choose plot type:", ["Pie chart","Bar chart"])
+    if chart == "Pie chart":
+        st.plotly_chart(plotpie)
+    elif chart == "Bar chart":
+        st.plotly_chart(plotbar)
