@@ -298,7 +298,6 @@ if menu == "Video Categories":
                     videoviews.to_csv("videoviews.csv",index = False)
 
 if menu == "Video Ratings":
-    #st.table(videoviews)
     melt_tables = videoviews.melt(var_name="Video Title", value_name="Views")
     plotbar = px.bar(melt_tables, x = "Video Title", y = "Views")
     plotpie = px.pie(melt_tables, names = "Video Title", values = "Views")
