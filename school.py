@@ -65,6 +65,8 @@ if menu == "Registration":
 if menu == "View Student Info":
     studentUser = st.sidebar.text_input("Input student ID: ").lower()
     admin = st.sidebar.text_input("Enter admin password: ", type = "password")
+    st.sidebar.write("Password is: School12457")
+    st.sidebar.write("**Made by Sam**")
     if st.sidebar.button("View student info"):
         if admin == adminPassword:
             finduser = csvlink[csvlink['StudentID'] == studentUser]
