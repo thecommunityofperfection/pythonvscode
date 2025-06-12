@@ -57,6 +57,7 @@ if menu == "Registration":
                     with open(studentID + ".png", "wb") as writepic:
                         writepic.write(uploadpfp.getbuffer())
                     st.success("Saved Student Information!")
+                    st.success("Student user is:", studentID)
                 else:
                     st.error("Upload student picture first & Fill all details!")
 

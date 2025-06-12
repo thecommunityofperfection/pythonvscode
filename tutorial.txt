@@ -1,0 +1,4 @@
+How to use:
+This app is made to store and add students to a database.
+To add a new student, fill out the form and upload a picture. Then click save.
+To find stored students, navigate to "View Student Info" and type in the student's ID and the admin password.
