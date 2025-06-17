@@ -11,6 +11,10 @@ if "current_page" not in st.session_state:
     st.session_state.current_page = "start"
     st.rerun()
 
+
+if "score" not in st.session_state:
+    st.session_state.score = 0
+
 def countdown():
     x = 0
     while x < 3:
@@ -19,7 +23,7 @@ def countdown():
         x += 1
 
 def start():
-    st.title("How much do you know about Python?")
+    st.title("Sam's Quizzes?")
     name = st.text_input("First, your name?")
     if name:
         button1, button2 = st.columns(2)
@@ -43,6 +47,7 @@ def q1():
         if st.button("Next Question"):
             if q1 == "print()":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q2"
                 st.rerun()
@@ -60,6 +65,7 @@ def q2():
         if st.button("Next Question"):
             if q2 == "import":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q3"
                 st.rerun()
@@ -79,6 +85,7 @@ def q3():
         if st.button("Next Question"):
             if q3 == "'''":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q4"
                 st.rerun()
@@ -98,6 +105,7 @@ def q4():
         if st.button("Next Question"):
             if q4 == ".py":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q5"
                 st.rerun()
@@ -117,6 +125,7 @@ def q5():
         if st.button("Next Question"):
             if q5 == "input()":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q6"
                 st.rerun()
@@ -136,6 +145,7 @@ def q6():
         if st.button("Next Question"):
             if q6 == "variable":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q7"
                 st.rerun()
@@ -155,6 +165,7 @@ def q7():
         if st.button("Next Question"):
             if q7 == "Guido van Rossum":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q8"
                 st.rerun()
@@ -174,6 +185,7 @@ def q8():
         if st.button("Next Question"):
             if q8 == "Floor division":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q9"
                 st.rerun()
@@ -193,6 +205,7 @@ def q9():
         if st.button("Next Question"):
             if q9 == "Modulus":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q10"
                 st.rerun()
@@ -212,6 +225,7 @@ def q10():
         if st.button("Next Question"):
             if q10 == "False":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q11"
                 st.rerun()
@@ -231,6 +245,7 @@ def q11():
         if st.button("Next Question"):
             if q11 == "6":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "q12"
                 st.rerun()
@@ -250,6 +265,7 @@ def q12():
         if st.button("Finish Quiz"):
             if q12 == "Back end":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "finish"
                 st.rerun()
@@ -261,8 +277,9 @@ def q12():
 
 
 def finish():
-    st.info("Congrats! You have finished Sam's python quiz.\n\n Would you like to retake it?")
+    st.info(f"Congrats! You have finished Sam's python quiz.\n\n Your score was {st.session_state.score}/12\n\n Would you like to take another quiz??")
     if st.button("Retake Quiz"):
+        st.session_state.score = 0
         st.session_state.current_page = "start"
         st.rerun()
 #--------------------------------------------------------------------------------------------------------------------#
@@ -276,6 +293,7 @@ def p1():
         if st.button("Next Question"):
             if q1 == "January 19, 2010":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p2"
                 st.rerun()
@@ -293,6 +311,7 @@ def p2():
         if st.button("Next Question"):
             if q2 == "Pasta" or q2 == "Fried Plantain":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p3"
                 st.rerun()
@@ -312,6 +331,7 @@ def p3():
         if st.button("Next Question"):
             if q3 == "Canada":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p4"
                 st.rerun()
@@ -331,6 +351,7 @@ def p4():
         if st.button("Next Question"):
             if q4 == "England":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p5"
                 st.rerun()
@@ -350,6 +371,7 @@ def p5():
         if st.button("Next Question"):
             if q5 == "15":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p6"
                 st.rerun()
@@ -369,6 +391,7 @@ def p6():
         if st.button("Next Question"):
             if q6 == "1":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p7"
                 st.rerun()
@@ -388,6 +411,7 @@ def p7():
         if st.button("Next Question"):
             if q7 == "Newspaper Handout":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p8"
                 st.rerun()
@@ -407,6 +431,7 @@ def p8():
         if st.button("Next Question"):
             if q8 == "Powerless":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p9"
                 st.rerun()
@@ -425,6 +450,7 @@ def p9():
         if st.button("Next Question"):
             if q9 == "Blox Fruits":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p10"
                 st.rerun()
@@ -443,6 +469,7 @@ def p10():
         if st.button("Next Question"):
             if q10 == "False":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p11"
                 st.rerun()
@@ -461,6 +488,7 @@ def p11():
         if st.button("Next Question"):
             if q11 == "Programmer":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p12"
                 st.rerun()
@@ -479,6 +507,7 @@ def p12():
         if st.button("Finish Quiz"):
             if q12 == "Peanuts":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "p13"
                 st.rerun()
@@ -496,6 +525,7 @@ def p13():
         if st.button("Finish Quiz"):
             if q13 == "Blackberry":
                 st.success("Correct answer!")
+                st.session_state.score += 1
                 countdown()
                 st.session_state.current_page = "finish"
                 st.rerun()
@@ -507,8 +537,9 @@ def p13():
 
 
 def pfinish():
-    st.info("Congrats! You have finished Sam's python quiz.\n\n Would you like to retake it?")
+    st.info(f"Congrats! You have finished Sam's python quiz.\n\n Your score was {score}/13\n\n Would you like to take another quiz??")
     if st.button("Retake Quiz"):
+        st.session_state.score = 0
         st.session_state.current_page = "start"
         st.rerun()
 
@@ -542,8 +573,7 @@ elif st.session_state.current_page == "p13":
     p13()
 elif st.session_state.current_page == "pfinish":
     pfinish()
-# if st.session_state.current_page == "start":
-#     start()
+
 elif st.session_state.current_page == "q1":
     q1()
 elif st.session_state.current_page == "q2":
