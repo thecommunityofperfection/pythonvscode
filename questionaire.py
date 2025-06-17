@@ -17,10 +17,8 @@ if "score" not in st.session_state:
 
 def countdown():
     x = 0
-    while x < 3:
-        st.write(3-x)
-        time.sleep(1)
-        x += 1
+    with st.spinner('Loading Next Page', show_time = True):
+        time.sleep(3)
 
 def start():
     st.title("Sam's Quizzes")
@@ -28,12 +26,12 @@ def start():
     if name:
         button1, button2 = st.columns(2)
         with button1:
-            if st.button("Start quiz 1"): 
+            if st.button("Start Python Quiz"): 
                 countdown()
                 st.session_state.current_page = "q1"
                 st.rerun()
         with button2:
-            if st.button("Start quiz 2"): 
+            if st.button("Start Personal Quiz"): 
                 countdown()
                 st.session_state.current_page = "p1"
                 st.rerun()
@@ -278,7 +276,7 @@ def q12():
 
 def finish():
     st.info(f"Congrats! You have finished Sam's python quiz.\n\n Your score was {st.session_state.score}/12\n\n Would you like to take another quiz??")
-    if st.button("Retake Quiz"):
+    if st.button("Back to Homepage"):
         st.session_state.score = 0
         st.session_state.current_page = "start"
         st.rerun()
@@ -537,8 +535,8 @@ def p13():
 
 
 def pfinish():
-    st.info(f"Congrats! You have finished Sam's python quiz.\n\n Your score was {score}/13\n\n Would you like to take another quiz??")
-    if st.button("Retake Quiz"):
+    st.info(f"Congrats! You have finished Sam's personal quiz.\n\n Your score was {score}/13\n\n Would you like to take another quiz??")
+    if st.button("Back to Homepage"):
         st.session_state.score = 0
         st.session_state.current_page = "start"
         st.rerun()
