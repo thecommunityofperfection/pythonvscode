@@ -23,7 +23,7 @@ def countdown():
         x += 1
 
 def start():
-    st.title("Sam's Quizzes?")
+    st.title("Sam's Quizzes")
     name = st.text_input("First, your name?")
     if name:
         button1, button2 = st.columns(2)
