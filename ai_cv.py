@@ -15,10 +15,55 @@ headers = {"Authorization": f"Bearer {api_key}", "Content-Type":"application/jso
 
 #FUNCTION TO SEND DATA TO OPENROUTER
 def ask_ai(content):
-    data = {"model": "openai/gpt-3.5-turbo", "messages":[{"role":"user", "content":content}]}#assis:bot, sys
-    response = requests.post(api_link,headers=headers,json=data) #send the data, post = send
-    return response.json()['choices'][0]['message']['content'] #waiting for ai response
+    """Send prompt to AI and return only the text content."""
+    data = {
+        "model": "openai/gpt-3.5-turbo",
+        "messages": [{"role": "user", "content": content}],
+        "max_tokens": 250,
+        "temperature": 0.7
+    }
+    response = requests.post(api_link, headers=headers, json=data)
+    if response.status_code == 200:
+        return response.json()['choices'][0]['message']['content']
+    else:
+        return f"Error: {response.status_code}"
 
+def generate_pdf():
+    pdf = FPDF()
+
+    pdf.add_page()
+
+    colx = 10
+    coly = 10
+    colw = 50
+    colh = 10
+
+    #name
+    pdf.set_font("Arial", size = 25, style = "B")
+    pdf.set_xy(75, 10)
+    pdf.cell(colw, colh, txt = name, ln = True, align = "L")
+    
+    #email
+    if email:
+        pdf.set_font("Arial", size = 10)
+        pdf.set_xy(80, 22.5)
+        pdf.cell(colw, colh, txt = "Email: " + email, ln = True, align = "L")
+
+    #phone
+    if phone:
+        pdf.set_font("Arial", size = 10)
+        pdf.set_xy(80, 27.5)
+        pdf.cell(colw, colh, txt = "Phone: " + phone, ln = True, align = "L")
+
+    #address
+    pdf.set_font("Arial", size = 12.5)
+    pdf.set_xy(75, 18)
+    pdf.cell(colw, colh, txt = "Address: " + address, ln = True, align = "L")
+
+
+    pdf_file = "invoice_sam.pdf"
+    pdf.output(pdf_file)
+    return pdf_file
 
 with st.sidebar:
 
@@ -73,12 +118,21 @@ with st.sidebar:
     My education:{education}
     """
     reference_summary = f"""Create a reference outline using the information provided below in this format:
-    Name - Phone number/email - relationship
+    Name - Phone number/Email/Other Contact - relationship
     one line per reference
     My references:{references}
     """
     #---------------------------------------------------------
     generate =  st.button("Generate AI CV")
+
+
+    pdf_func = generate_pdf()
+    with open(pdf_func, "rb") as readtext:
+        pdf_data = readtext.read()
+if st.button('Show pdf'):
+    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
+    pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
+    st.markdown(pdf_embed,unsafe_allow_html=True)
 
 if generate:
     with st.spinner("Creating your CV"):
@@ -93,5 +147,8 @@ if generate:
             st.text_area(value = education_response, height = 150, label = "Education response   :blue[Click to edit]")
             reference_response = ask_ai(reference_summary)
             st.text_area(value = reference_response, height = 150, label = "Reference response   :blue[Click to edit]")
+
+
+            
         else:
             st.error("Please fill out all the required info")
