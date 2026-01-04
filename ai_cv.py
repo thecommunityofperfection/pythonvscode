@@ -44,16 +44,24 @@ def generate_pdf():
     pdf.cell(colw, colh, txt = name, ln = True, align = "L")
     
     #email
-    if email:
+    try:
         pdf.set_font("Arial", size = 10)
         pdf.set_xy(80, 22.5)
         pdf.cell(colw, colh, txt = "Email: " + email, ln = True, align = "L")
+    except:
+        pdf.set_font("Arial", size = 10)
+        pdf.set_xy(80, 22.5)
+        pdf.cell(colw, colh, txt = "", ln = True, align = "L")
 
     #phone
-    if phone:
+    try:
         pdf.set_font("Arial", size = 10)
         pdf.set_xy(80, 27.5)
         pdf.cell(colw, colh, txt = "Phone: " + phone, ln = True, align = "L")
+    except:
+        pdf.set_font("Arial", size = 10)
+        pdf.set_xy(80, 22.5)
+        pdf.cell(colw, colh, txt = "", ln = True, align = "L")
 
     #address
     pdf.set_font("Arial", size = 12.5)
