@@ -5,9 +5,9 @@ import base64
 
 st.set_page_config(layout = "wide", page_title = "Student's AI CV generator", page_icon = "")
 
-
+# pdf.ln(3)
 #---------------------CONFIG-------------------------
-api_key = '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'#API PROGRAM INTERFACE
+api_key = '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'#API PROGRAM INTERFACE
 
 api_link = "https://openrouter.ai/api/v1/chat/completions"
 headers = {"Authorization": f"Bearer {api_key}", "Content-Type":"application/json"}
@@ -41,40 +41,48 @@ def generate_pdf():
     #name
     pdf.set_font("Arial", size = 25, style = "B")
     pdf.set_xy(75, 10)
-    pdf.cell(colw, colh, txt = name, ln = True, align = "L")
+    pdf.cell(colw, colh, txt = name, ln = True, align = "C")
     
     #email
     try:
         pdf.set_font("Arial", size = 10)
         pdf.set_xy(80, 22.5)
-        pdf.cell(colw, colh, txt = "Email: " + email, ln = True, align = "L")
+        pdf.cell(colw, colh, txt = "Email: " + email, ln = True, align = "C")
     except:
         pdf.set_font("Arial", size = 10)
         pdf.set_xy(80, 22.5)
-        pdf.cell(colw, colh, txt = "", ln = True, align = "L")
+        pdf.cell(colw, colh, txt = "", ln = True, align = "C")
 
     #phone
     try:
         pdf.set_font("Arial", size = 10)
         pdf.set_xy(80, 27.5)
-        pdf.cell(colw, colh, txt = "Phone: " + phone, ln = True, align = "L")
+        pdf.cell(colw, colh, txt = "Phone: " + phone, ln = True, align = "C")
     except:
         pdf.set_font("Arial", size = 10)
         pdf.set_xy(80, 22.5)
-        pdf.cell(colw, colh, txt = "", ln = True, align = "L")
+        pdf.cell(colw, colh, txt = "", ln = True, align = "C")
 
     #address
-    pdf.set_font("Arial", size = 12.5)
-    pdf.set_xy(75, 18)
-    pdf.cell(colw, colh, txt = "Address: " + address, ln = True, align = "L")
+    pdf.set_font("Arial", size = 10)
+    pdf.set_xy(80, 18)
+    pdf.cell(colw, colh, txt = "Address: " + address, ln = True, align = "C")
 
+    #summary
+    pdf.set_font("Arial", size = 10, style = "B")
+    pdf.set_xy(10, 50)
+    pdf.cell(10, colh, txt = "Summary: ", ln = True, align = "L")
+
+    pdf.set_font("Arial", size = 10)
+    pdf.set_xy(10, 60)
+    pdf.multi_cell(0, 4.5, txt = pro_response, align = "L")
 
     pdf_file = "invoice_sam.pdf"
     pdf.output(pdf_file)
     return pdf_file
 
 with st.sidebar:
-
+    global pro_response, skills_response, work_response, education_response, reference_response
     st.title("AI CV Generator")
     st.write(":grey[Please fill this form to generate a free CV today!]")
     name = st.text_input("Input name", placeholder = "Full name", label_visibility = "collapsed")
@@ -130,23 +138,20 @@ with st.sidebar:
     one line per reference
     My references:{references}
     """
+
     #---------------------------------------------------------
-    generate =  st.button("Generate AI CV")
+    generate =  st.checkbox("Generate AI CV")
 
 
-    pdf_func = generate_pdf()
-    with open(pdf_func, "rb") as readtext:
-        pdf_data = readtext.read()
-if st.button('Show pdf'):
-    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
-    pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
-    st.markdown(pdf_embed,unsafe_allow_html=True)
+    
+
+
 
 if generate:
     with st.spinner("Creating your CV"):
         if name and address and skills and education and experience:
             pro_response = ask_ai(summary)
-            st.text_area(value = pro_response, height = 150, label = "Professional Summary   :blue[Click to edit]")
+            resp = st.text_area(value = pro_response, height = 150, label = "Professional Summary   :blue[Click to edit]")
             skills_response = ask_ai(skills_summary)
             st.text_area(value = skills_response, height = 150, label = "Skills response   :blue[Click to edit]")
             work_response = ask_ai(work_summary)
@@ -160,3 +165,11 @@ if generate:
             
         else:
             st.error("Please fill out all the required info")
+    
+if st.button('Show pdf'):
+    pdf_func = generate_pdf()
+    with open(pdf_func, "rb") as readtext:
+        pdf_data = readtext.read()
+    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
+    pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
+    st.markdown(pdf_embed,unsafe_allow_html=True)
