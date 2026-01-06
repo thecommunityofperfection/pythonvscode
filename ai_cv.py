@@ -74,8 +74,45 @@ def generate_pdf():
     pdf.cell(10, colh, txt = "Summary: ", ln = True, align = "L")
 
     pdf.set_font("Arial", size = 10)
-    pdf.set_xy(10, 60)
+    pdf.ln(0.8)
     pdf.multi_cell(0, 4.5, txt = pro_response, align = "L")
+
+    #skills
+    pdf.ln(3)
+    pdf.set_font("Arial", size = 10, style = "B")
+    pdf.cell(10, colh, txt = "Skills: ", ln = True, align = "L")
+
+    pdf.set_font("Arial", size = 10)
+    pdf.ln(0.8)
+    pdf.multi_cell(0, 4.5, txt = skills_response, align = "L")
+
+    #work
+    pdf.ln(3)
+    pdf.set_font("Arial", size = 10, style = "B")
+    pdf.cell(10, colh, txt = "Work: ", ln = True, align = "L")
+
+    pdf.set_font("Arial", size = 10)
+    pdf.ln(0.8)
+    pdf.multi_cell(0, 4.5, txt = work_response, align = "L")
+
+    #education
+    pdf.ln(3)
+    pdf.set_font("Arial", size = 10, style = "B")
+    pdf.cell(10, colh, txt = "Education: ", ln = True, align = "L")
+
+    pdf.set_font("Arial", size = 10)
+    pdf.ln(0.8)
+    pdf.multi_cell(0, 4.5, txt = education_response, align = "L")
+
+    #references
+    pdf.ln(3)
+    pdf.set_font("Arial", size = 10, style = "B")
+    pdf.cell(10, colh, txt = "References: ", ln = True, align = "L")
+
+    pdf.set_font("Arial", size = 10)
+    pdf.ln(0.8)
+    pdf.multi_cell(0, 4.5, txt = reference_response, align = "L")
+
 
     pdf_file = "invoice_sam.pdf"
     pdf.output(pdf_file)
