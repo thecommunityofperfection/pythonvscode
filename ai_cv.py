@@ -208,8 +208,8 @@ if generate:
             with open(pdf_func, "rb") as readtext:
                 pdf_data = readtext.read()
             pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
-            pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
-            st.markdown(pdf_embed,unsafe_allow_html=True)
+            #pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
+            #st.markdown(pdf_embed,unsafe_allow_html=True)
             st.download_button(label = "Download PDF", data = pdf_data, file_name = name + "_cv.pdf", mime = "application/pdf")
 
             
