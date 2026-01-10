@@ -203,17 +203,15 @@ if generate:
             st.text_area(value = st.session_state.education_response, height = 150, label = "Education response   :blue[Click to edit]")
             st.session_state.reference_response = ask_ai(reference_summary)
             st.text_area(value = st.session_state.reference_response, height = 150, label = "Reference response   :blue[Click to edit]")
-
+            if st.button('Show pdf'):
+                pdf_func = generate_pdf()
+                with open(pdf_func, "rb") as readtext:
+                    pdf_data = readtext.read()
+                pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
+                pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
+                st.markdown(pdf_embed,unsafe_allow_html=True)
+                st.download_button(label = "Download PDF", data = pdf_data, file_name = name + "_cv.pdf", mime = "application/pdf")
 
             
         else:
             st.error("Please fill out all the required info")
-    
-if st.button('Show pdf'):
-    pdf_func = generate_pdf()
-    with open(pdf_func, "rb") as readtext:
-        pdf_data = readtext.read()
-    pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
-    pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
-    st.markdown(pdf_embed,unsafe_allow_html=True)
-    st.download_button(label = "Download PDF", data = pdf_data, file_name = "Sam_invoice.pdf", mime = "application/pdf")
