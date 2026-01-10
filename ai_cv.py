@@ -9,7 +9,7 @@ if "current_page" not in st.session_state:
     st.rerun()
 # pdf.ln(3)
 #---------------------CONFIG-------------------------
-api_key = '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'#API PROGRAM INTERFACE
+api_key = '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'#API PROGRAM INTERFACE
 
 api_link = "https://openrouter.ai/api/v1/chat/completions"
 headers = {"Authorization": f"Bearer {api_key}", "Content-Type":"application/json"}
