@@ -188,8 +188,10 @@ with st.sidebar:
     #st.session_state.generate =  st.checkbox("Generate AI CV")
     if st.session_state.generate == 0:
         if st.button("Generate AI CV"):
-            st.session_state.generate += 1
-
+            st.session_state.generate = 1
+    else:
+        if st.button("Generate again"):
+            st.session_state.generate = 1
     
 
 
