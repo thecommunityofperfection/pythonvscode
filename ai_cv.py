@@ -182,14 +182,14 @@ with st.sidebar:
 
     #---------------------------------------------------------
     #st.session_state.generate =  st.checkbox("Generate AI CV")
-    if st.button("Generate AI CV"):
-        st.session_state.generate = 1
+if st.button("Generate AI CV"):
+    st.session_state.generate = 1
 
-    
+        
 
 
 
-if st.session_state.generate:
+    #if st.session_state.generate:
     if st.session_state.generate == 1:
         with st.spinner("Creating your CV"):
             if name and address and skills and education and experience:
