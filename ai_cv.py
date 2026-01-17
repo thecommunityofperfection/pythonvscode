@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from fpdf import FPDF
 import base64
+from time import sleep
 
 
 st.set_page_config(layout = "wide", page_title = "Sam's AI CV generator", page_icon = "")
@@ -48,7 +49,7 @@ def generate_pdf():
     pdf.cell(colw, colh, txt = name, ln = True, align = "C")
     
     if pfp == "Yes":
-        pdf.image(st.session_state.pic, x = 12.5, y = 12.5, w = 20)
+        pdf.image(pic, x = 12.5, y = 12.5, w = 20)
     #email
     try:
         pdf.set_font("Arial", size = 10)
@@ -144,7 +145,7 @@ with st.sidebar:
         if st.button("Save Picture"):
             with open(name + ".png", "wb") as writepic:
                 writepic.write(uploadPicture.getbuffer())
-                st.session_state.pic = name + ".png"
+                pic = name + ".png"
                 st.success("Saved Picture!")
     elif pfp == "No":
         st.info("You have opted out of adding a profile picture")
@@ -218,7 +219,7 @@ if st.session_state.generate == 1:
                 st.session_state.education_response = st.session_state.education_edit
                 st.session_state.reference_response = st.session_state.reference_edit
                 st.success("Saved edits sucessfully")
-                st.sleep(2)
+                sleep(2)
                 st.rerun()
             #if st.button('Show pdf'):
             pdf_func = generate_pdf()
@@ -245,7 +246,7 @@ elif st.session_state.generate == 100:
         st.session_state.education_response = st.session_state.education_edit
         st.session_state.reference_response = st.session_state.reference_edit
         st.success("Saved edits sucessfully")
-        st.sleep(2)
+        sleep(2)
         st.rerun()
     pdf_func = generate_pdf()
     with open(pdf_func, "rb") as readtext:
