@@ -202,16 +202,16 @@ if st.session_state.generate == 1:
         if name and address and skills and education and experience:
             st.session_state.generate = 100
             st.session_state.pro_response = ask_ai(summary)
-            st.session_state.pro_edit = st.text_area(value = st.session_state.pro_response, height = 150, label = "Professional Summary   :blue[Click to edit]")
+            st.session_state.pro_edit = st.text_area(value = st.session_state.pro_response, height = 150, label = "Professional Summary   :blue[Click to edit]", key = 1)
             st.session_state.skills_response = ask_ai(skills_summary)
-            st.session_state.skills_edit = st.text_area(value = st.session_state.skills_response, height = 150, label = "Skills response   :blue[Click to edit]")
+            st.session_state.skills_edit = st.text_area(value = st.session_state.skills_response, height = 150, label = "Skills response   :blue[Click to edit]", key = 2)
             st.session_state.work_response = ask_ai(work_summary)
-            st.session_state.work_edit = st.text_area(value = st.session_state.work_response, height = 150, label = "Work response   :blue[Click to edit]")
+            st.session_state.work_edit = st.text_area(value = st.session_state.work_response, height = 150, label = "Work response   :blue[Click to edit]", key = 3)
             st.session_state.education_response = ask_ai(education_summary)
-            st.session_state.education_edit = st.text_area(value = st.session_state.education_response, height = 150, label = "Education response   :blue[Click to edit]")
+            st.session_state.education_edit = st.text_area(value = st.session_state.education_response, height = 150, label = "Education response   :blue[Click to edit]", key = 4)
             st.session_state.reference_response = ask_ai(reference_summary)
-            st.session_state.reference_edit = st.text_area(value = st.session_state.reference_response, height = 150, label = "Reference response   :blue[Click to edit]")
-            if st.button("Save edits:"):
+            st.session_state.reference_edit = st.text_area(value = st.session_state.reference_response, height = 150, label = "Reference response   :blue[Click to edit]", key = 5)
+            if st.button("Save edits"):
                 st.session_state.pro_response = st.session_state.pro_edit
                 st.session_state.skills_response = st.session_state.skills_edit
                 st.session_state.work_response = st.session_state.work_edit
@@ -232,12 +232,12 @@ if st.session_state.generate == 1:
             st.session_state.generate = 0
             st.error("Please fill out all the required info")
 if st.session_state.generate == 100:
-    st.session_state.pro_edit = st.text_area(value = st.session_state.pro_response, height = 150, label = "Professional Summary   :blue[Click to edit]")
-    st.session_state.skills_edit = st.text_area(value = st.session_state.skills_response, height = 150, label = "Skills response   :blue[Click to edit]")
-    st.session_state.work_edit = st.text_area(value = st.session_state.work_response, height = 150, label = "Work response   :blue[Click to edit]")
-    st.session_state.education_edit = st.text_area(value = st.session_state.education_response, height = 150, label = "Education response   :blue[Click to edit]")
-    st.session_state.reference_edit = st.text_area(value = st.session_state.reference_response, height = 150, label = "Reference response   :blue[Click to edit]")
-    if st.button("Save edits:"):
+    st.session_state.pro_edit = st.text_area(value = st.session_state.pro_response, height = 150, label = "Professional Summary   :blue[Click to edit]", key = 6)
+    st.session_state.skills_edit = st.text_area(value = st.session_state.skills_response, height = 150, label = "Skills response   :blue[Click to edit]", key = 7)
+    st.session_state.work_edit = st.text_area(value = st.session_state.work_response, height = 150, label = "Work response   :blue[Click to edit]", key = 8)
+    st.session_state.education_edit = st.text_area(value = st.session_state.education_response, height = 150, label = "Education response   :blue[Click to edit]", key = 9)
+    st.session_state.reference_edit = st.text_area(value = st.session_state.reference_response, height = 150, label = "Reference response   :blue[Click to edit]", key = 10)
+    if st.button("Save edits"):
         st.session_state.pro_response = st.session_state.pro_edit
         st.session_state.skills_response = st.session_state.skills_edit
         st.session_state.work_response = st.session_state.work_edit
