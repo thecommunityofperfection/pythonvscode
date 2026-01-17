@@ -143,9 +143,9 @@ with st.sidebar:
     if pfp == "Yes":
         uploadPicture = st.file_uploader("Choose profile picture: ", type = ["jpg", "png", "jpeg"])
         if st.button("Save Picture"):
-            with open(name + ".png", "wb") as writepic:
+            with open("user" + ".png", "wb") as writepic:
                 writepic.write(uploadPicture.getbuffer())
-                pic = name + ".png"
+                pic = "user" + ".png"
                 st.success("Saved Picture!")
     elif pfp == "No":
         st.info("You have opted out of adding a profile picture")
