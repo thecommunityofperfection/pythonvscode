@@ -217,6 +217,8 @@ if st.session_state.generate == 1:
                 st.session_state.work_response = st.session_state.work_edit
                 st.session_state.education_response = st.session_state.education_edit
                 st.session_state.reference_response = st.session_state.reference_edit
+                st.success("Saved edits sucessfully")
+                st.wait(2)
                 st.rerun()
             #if st.button('Show pdf'):
             pdf_func = generate_pdf()
@@ -242,6 +244,8 @@ elif st.session_state.generate == 100:
         st.session_state.work_response = st.session_state.work_edit
         st.session_state.education_response = st.session_state.education_edit
         st.session_state.reference_response = st.session_state.reference_edit
+        st.success("Saved edits sucessfully")
+        st.wait(2)
         st.rerun()
     pdf_func = generate_pdf()
     with open(pdf_func, "rb") as readtext:
