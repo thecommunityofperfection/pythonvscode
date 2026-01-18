@@ -49,7 +49,7 @@ def generate_pdf():
     pdf.cell(colw, colh, txt = name, ln = True, align = "C")
     
     if pfp == "Yes":
-        pdf.image(pic, x = 12.5, y = 12.5, w = 20)
+        pdf.image(st.session_state.pic, x = 12.5, y = 12.5, w = 20)
     #email
     try:
         pdf.set_font("Arial", size = 10)
@@ -146,6 +146,7 @@ with st.sidebar:
             with open("user" + ".png", "wb") as writepic:
                 writepic.write(uploadPicture.getbuffer())
                 pic = "user" + ".png"
+                st.session_state.pic = pic
                 st.success("Saved Picture!")
     elif pfp == "No":
         st.info("You have opted out of adding a profile picture")
