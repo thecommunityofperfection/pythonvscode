@@ -227,13 +227,14 @@ if st.session_state.generate == 1:
             with open(pdf_func, "rb") as readtext:
                 pdf_data = readtext.read()
             pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
+            st.download_button(label = "Download PDF", data = pdf_data, file_name = name + "_cv.pdf", mime = "application/pdf")
             #pdf_embed = f'<embed src= "data:application/pdf;base64, {pdf_base64}" type= "application/pdf" width="100%" height="600px" />'
             #st.markdown(pdf_embed,unsafe_allow_html=True)
         else:
             st.session_state.generate = 0
             st.error("Please fill out all the required info")
 
-            st.download_button(label = "Download PDF", data = pdf_data, file_name = name + "_cv.pdf", mime = "application/pdf")
+            
 elif st.session_state.generate == 100:
     st.session_state.pro_edit = st.text_area(value = st.session_state.pro_response, height = 150, label = "Professional Summary   :blue[Click to edit]", key = 6)
     st.session_state.skills_edit = st.text_area(value = st.session_state.skills_response, height = 150, label = "Skills response   :blue[Click to edit]", key = 7)
