@@ -84,11 +84,11 @@ with st.sidebar:
                     at the {grade} level.
                     no prompt text.
                     """
-    #if
-    if st.button("Generate learning aid"):
-        response = ask_ai(helpAsk)
-        st.session_state.generate = 1
-        
+    if helpType:
+        if st.button("Generate learning aid"):
+            response = ask_ai(helpAsk)
+            st.session_state.generate = 1
+            
 if st.session_state.generate == 1:
     st.subheader(topic)
     st.divider()
