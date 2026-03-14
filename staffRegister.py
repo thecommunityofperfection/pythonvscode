@@ -110,4 +110,4 @@ if menu == "Staff File":
                                 st.write(getCrt)
                         with sec8:
                                 st.write("Salary")
-                                st.write(f"{getSal:,}")                
+                                st.write(f"${getSal:,}")                
