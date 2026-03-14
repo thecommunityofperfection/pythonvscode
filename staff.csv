@@ -1,0 +1,4 @@
+Staff_ID,First Name,Last Name,Gender,Employment Date,Job Title,Email,Department,Degree,Salary,Contract
+Staff_1,Sam,Luro,Male,2017-01-12,Senior Staff,sam@gmail.com,Security,Professional Degree,999999,Full time
+Staff_2,Hans,Leroy,Male,2018-04-14,Supervisor,hans.leroy@gmail.com,Accounting,Graduate Degree,205000,Full time
+Staff_3,mock,exam,Female,2026-03-08,Senior Staff,examtester@hotmail.net,Medical,Professional Degree,120000,Full time

@@ -6,7 +6,7 @@ if "generate" not in st.session_state:
     st.session_state.generate = 0
     st.session_state.gen = 0
     st.rerun()
-st.set_page_config(layout = "wide", page_title = "Sam's AI CV generator", page_icon = "")
+st.set_page_config(layout = "wide", page_title = "Sam's AI learning aid", page_icon = "📖")
 
 #---------------------CONFIG-------------------------
 api_key = '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'#API PROGRAM INTERFACE
@@ -31,9 +31,9 @@ def ask_ai(content):
     
 with st.sidebar:
     st.title("AI learning aid")
-    grade = st.text_input("What school level(or grade) are you in?")
-    subject = st.selectbox("Choose a subject", ["Choose a subject","Math", "English", "Geography", "History", "Science"])
-    if subject != "Choose a subject":
+    grade = st.selectbox("What school level(or grade) are you in?", ["Preschool", "Kindergarten", "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 7", "Grade 8", "Grade 9", "Grade 10", "Grade 11", "Grade 12"])
+    subject = st.selectbox("Choose a subject", ["Select","Choose your own","Math", "English", "Geography", "History", "Science"])
+    if subject != "Select" and subject != "Choose your own":
         topic1 = f"""Generate a topic for {subject}
         at the {grade} level (canadian).
         1-4 words
@@ -65,7 +65,7 @@ with st.sidebar:
                 topic = topicChoice
                 done = True
         if topic != "Select":
-            helpType = st.selectbox("What form of help do you want?", ["Select", "Short note", "Key points", "Questions to solve"])
+            helpType = st.selectbox("What form of help do you want?", ["Select", "Short note", "Examples", "Questions to solve"])
             if helpType != "Select":
                 if helpType == "Questions to solve":
                     qType = st.pills("Question type:", ["Problems with solutions included", "Problems without solutions included"])
@@ -79,7 +79,7 @@ with st.sidebar:
                     at the {grade} level.
                     no prompt text.
                     """
-                elif helpType == "Key points":
+                elif helpType == "Examples":
                     helpAsk = f"""Generate {helpType} for {subject} topic: {topic}.
                     at the {grade} level.
                     no prompt text.
@@ -87,6 +87,77 @@ with st.sidebar:
                 if st.button("Generate learning aid"):
                     response = ask_ai(helpAsk)
                     st.session_state.generate = 1
+    elif subject == "Choose your own":
+        subject = st.text_input("Subject choice:")
+        if subject:
+            if st.session_state.gen != 1:
+                topic1 = f"""Generate a topic for {subject}
+            at the {grade} level (canadian).
+            1-4 words
+            """
+                st.session_state.topic1AI = ask_ai(topic1)
+                topic2 = f"""Generate a topic for {subject}
+            at the {grade} level (canadian).
+            1-4 words
+            do not use/include {st.session_state.topic1AI}
+            """
+                st.session_state.topic2AI = ask_ai(topic2)
+                topic3 = f"""Generate a topic for {subject}
+                at the {grade} level (canadian).
+                1-4 words
+                do not use/include {st.session_state.topic1AI, st.session_state.topic2AI}
+                """
+                st.session_state.topic3AI = ask_ai(topic3)
+                st.session_state.gen = 1
+            else:
+                if st.button("Regenerate topics"):
+                    topic1 = f"""Generate a topic for {subject}
+                    at the {grade} level (canadian).
+                    1-4 words
+                    do not include {st.session_state.topic1AI}
+                    """
+                    st.session_state.topic1AI = ask_ai(topic1)
+                    topic2 = f"""Generate a topic for {subject}
+                    at the {grade} level (canadian).
+                    1-4 words
+                    do not use/include {st.session_state.topic1AI, st.session_state.topic2AI}
+                    """
+                    st.session_state.topic2AI = ask_ai(topic2)
+                    topic3 = f"""Generate a topic for {subject}
+                    at the {grade} level (canadian).
+                    1-4 words
+                    do not use/include {st.session_state.topic1AI, st.session_state.topic2AI, st.session_state.topic3AI}
+                    """
+                    st.session_state.topic3AI = ask_ai(topic3)
+            topic = st.pills("What topics do you want to learn", ["Select","Choose your own", st.session_state.topic1AI, st.session_state.topic2AI, st.session_state.topic3AI])
+            if topic == "Choose your own":
+                topicChoice = st.text_input("Topic choice:")
+                if topicChoice:
+                    topic = topicChoice
+                    done = True
+            if topic != "Select":
+                helpType = st.selectbox("What form of help do you want?", ["Select", "Short note", "Examples", "Questions to solve"])
+                if helpType != "Select":
+                    if helpType == "Questions to solve":
+                        qType = st.pills("Question type:", ["Problems with solutions included", "Problems without solutions included"])
+                        helpAsk = f"""Generate 3-5 {helpType} for {subject} topic: {topic}.
+                        {qType}
+                        at the {grade} level.
+                        no prompt text.
+                        """
+                    elif helpType == "Short note":
+                        helpAsk = f"""Generate {helpType} help for {subject} topic: {topic}.
+                        at the {grade} level.
+                        no prompt text.
+                        """
+                    elif helpType == "Examples":
+                        helpAsk = f"""Generate {helpType} for {subject} topic: {topic}.
+                        at the {grade} level.
+                        no prompt text.
+                        """
+                    if st.button("Generate learning aid"):
+                        response = ask_ai(helpAsk)
+                        st.session_state.generate = 1
                     
 if st.session_state.generate == 1:
     st.subheader(topic)
