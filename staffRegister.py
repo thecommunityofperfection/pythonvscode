@@ -6,7 +6,7 @@ try:
         csvlink = pd.read_csv("staff.csv")
 except:
         csvlink = pd.DataFrame()
-staffID = "Staff_"+str(len(csvlink)+1)
+staffID = "staff_"+str(len(csvlink)+1)
 menu = st.sidebar.selectbox("Menu", ["Register Staff", "Staff Database", "Staff File"])
 st.sidebar.info("Made by Sam🔥")
 if menu == "Register Staff":
@@ -51,7 +51,7 @@ if menu == "Staff File":
         staff1, staff2, staff3 = st.columns(3)
         with staff2:
                 st.subheader(":green[Find Staff Info]")
-                findStaff  = st.text_input("Enter Staff ID")
+                findStaff  = st.text_input("Enter Staff ID").lower()
                 findButton = st.button("Find Staff")
 
         if findButton:
