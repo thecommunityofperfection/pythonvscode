@@ -17,7 +17,7 @@ def donate():
     findIndex = csvlink[csvlink["Title"] == choice].index[0]
     findResult = csvlink[csvlink["Title"] == choice]
     getRemaining = findResult["Remaining"].iloc[0]
-    amount = st.number_input("How much would you like to donate", 0.00, getRemaining, 1)
+    amount = st.number_input("How much would you like to donate", 0.00, float(getRemaining), 1)
     if getRemaining != 0:
         if st.button("Donate"):
             csvlink.loc[findIndex, "Remaining"] -= amount
