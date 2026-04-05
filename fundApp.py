@@ -23,6 +23,7 @@ def donate():
             csvlink.loc[findIndex, "Remaining"] -= amount
             csvlink.to_csv("fund.csv", index=False)
             st.success("Donation successful!")
+            st.rerun()
     else:
         st.error("Cannot donate to this fundraiser.")
 if menu == "Donate":
