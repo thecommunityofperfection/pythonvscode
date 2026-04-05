@@ -35,7 +35,7 @@ if menu == "Donate":
             getGoal = findResult["Goal"].iloc[0]
             getRemaining = findResult["Remaining"].iloc[0]
             if getRemaining != 0:
-                st.write(getTitle)
+                st.write(:blue[{getTitle}])
                 st.write(getDesc)
                 st.write(f"Goal: ${getGoal}")
                 st.write(f"Remaining: ${getRemaining}")
@@ -57,7 +57,7 @@ if menu == "Donate":
             getGoal = findResult["Goal"].iloc[0]
             getRemaining = findResult["Remaining"].iloc[0]
             if getRemaining != 0:
-                st.write(getTitle)
+                st.write(f":blue[{getTitle}]")
                 st.write(getDesc)
                 st.write(f"Goal: ${getGoal}")
                 st.write(f"Remaining: ${getRemaining}")
@@ -79,7 +79,7 @@ if menu == "Donate":
             getGoal = findResult["Goal"].iloc[0]
             getRemaining = findResult["Remaining"].iloc[0]
             if getRemaining != 0:
-                st.write(getTitle)
+                st.write(:blue[{getTitle}])
                 st.write(getDesc)
                 st.write(f"Goal: ${getGoal}")
                 st.write(f"Remaining: ${getRemaining}")
