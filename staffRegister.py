@@ -41,7 +41,7 @@ if menu == "Register Staff":
                         staffdict = {"Staff_ID":[staffID],"First Name":[fName],"Last Name":[lName],"Gender":[gender],"Employment Date":[employmentDate],"Job Title":[title],"Email":[email],"Department":[department],"Degree":[degree],"Salary":[income],"Contract":[status]}
                         stafftable = pd.DataFrame(staffdict)
                         jointables = pd.concat([csvlink, stafftable], ignore_index=True)
-                        jointables.to_csv("staff.csv", index=False)
+                        jointables.to_csv(csvlink, index=False)
                         st.success("Submission complete!")
 
 if menu == "Staff Database":
