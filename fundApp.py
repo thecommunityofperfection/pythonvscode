@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from time import sleep
 
 st.set_page_config(layout = "wide", page_title = "Sam's Funding Page", page_icon = "💸")
 try:
@@ -23,6 +24,7 @@ def donate():
             csvlink.loc[findIndex, "Remaining"] -= amount
             csvlink.to_csv("fund.csv", index=False)
             st.success("Donation successful!")
+            sleep(5)
             st.rerun()
     else:
         st.error("Cannot donate to this fundraiser.")
