@@ -17,7 +17,7 @@ def donate():
     findIndex = csvlink[csvlink["Title"] == choice].index[0]
     findResult = csvlink[csvlink["Title"] == choice]
     getRemaining = findResult["Remaining"].iloc[0]
-    amount = st.number_input("How much would you like to donate", 0.01, getRemaining)
+    amount = st.number_input("How much would you like to donate", 0, getRemaining, 0, 1)
     if getRemaining != 0:
         if st.button("Donate"):
             csvlink.loc[findIndex, "Remaining"] -= amount
@@ -43,7 +43,7 @@ if menu == "Donate":
                 if st.checkbox("Donate Now", key = i):
                     donate()
             else:
-                st.write(getTitle)
+                st.write(f":blue[{getTitle}]")
                 st.write(getDesc)
                 st.write(f"Goal: ${getGoal}")
                 st.write(f"Remaining: ${getRemaining}")
@@ -65,7 +65,7 @@ if menu == "Donate":
                 if st.checkbox("Donate Now", key = i):
                     donate()
             else:
-                st.write(getTitle)
+                st.write(f":blue[{getTitle}]")
                 st.write(getDesc)
                 st.write(f"Goal: ${getGoal}")
                 st.write(f"Remaining: ${getRemaining}")
@@ -87,7 +87,7 @@ if menu == "Donate":
                 if st.checkbox("Donate Now", key = i):
                     donate()
             else:
-                st.write(getTitle)
+                st.write(f":blue[{getTitle}]")
                 st.write(getDesc)
                 st.write(f"Goal: ${getGoal}")
                 st.write(f"Remaining: ${getRemaining}")
