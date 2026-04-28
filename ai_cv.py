@@ -12,7 +12,7 @@ if "generate" not in st.session_state:
     st.rerun()
 # pdf.ln(3)
 #---------------------CONFIG-------------------------
-api_key = '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'#API PROGRAM INTERFACE
+api_key = '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'#API PROGRAM INTERFACE
 
 api_link = "https://openrouter.ai/api/v1/chat/completions"
 headers = {"Authorization": f"Bearer {api_key}", "Content-Type":"application/json"}
