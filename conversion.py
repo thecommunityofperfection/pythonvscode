@@ -40,6 +40,8 @@ if menu == "Temperature":
     if conv1 == "celsius":
         cel = st.number_input("What is your temperature in celsius?")
         result = (cel*(9/5))+32
+        st.write(f"Your temperature in fahrenheit is: {result}")
     elif conv1 == "fahrenheit":
         fahr = st.number_input("What is your temperature in fahrenheit?")
         result = (fahr-32)*(5/9)
+        st.write(f"Your temperature in celsius is: {result}")
