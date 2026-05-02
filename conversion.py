@@ -36,7 +36,7 @@ if menu == "Weight":
         result = dist1 * weights[conv1] / weights[conv2]
         st.write(f"{dist1} {conv1}s in {conv2}s is: {result}.")
 if menu == "Temperature":
-    conv1 = st.selectbox("Choose your starting unit")
+    conv1 = st.selectbox("Choose your starting unit", ["celsius", "fahrenheit"])
     if conv1 == "celsius":
         cel = st.number_input("What is your temperature in celsius?")
         result = (cel*(9/5))+32
