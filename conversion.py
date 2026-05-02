@@ -17,7 +17,16 @@ weights = {
     "tonne": 1_000_000,        # metric ton
     "ounce": 28.3495,
     "pound": 453.592,
-    "stone": 6350.29
+    "stone": 6350.29,
+    "milliliter": 1,
+    "liter": 1000,
+    "teaspoon": 4.92892,
+    "tablespoon": 14.7868,
+    "cup": 236.588,
+    "pint": 473.176,
+    "quart": 946.353,
+    "gallon": 3785.41,
+    "fluid ounce": 29.5735
 }
 
 menu = st.sidebar.selectbox("Choose you conversion", ["Weight", 'Temperature', "Distance"])
@@ -29,8 +38,8 @@ if menu == "Distance":
         result = dist1 * distances[conv1] / distances[conv2]
         st.write(f"{dist1} {conv1}s in {conv2}s is: {result}.")
 if menu == "Weight":
-    conv1 = st.selectbox("Choose starting unit:", ["Choose", "gram", "kilogram", "milligram", "tonne", "ounce", "pound", "stone"])
-    conv2 = st.selectbox("Choose resulting unit:", ["Choose", "gram", "kilogram", "milligram", "tonne", "ounce", "pound", "stone"])
+    conv1 = st.selectbox("Choose starting unit:", ["Choose", "gram", "kilogram", "milligram", "tonne", "ounce", "pound", "stone", "milliliter", "liter", "teaspoon", "tablespoon", "cup", "pint", "quart", "gallon", "fluid ounce"])
+    conv2 = st.selectbox("Choose resulting unit:", ["Choose", "gram", "kilogram", "milligram", "tonne", "ounce", "pound", "stone", "milliliter", "liter", "teaspoon", "tablespoon", "cup", "pint", "quart", "gallon", "fluid ounce"])
     if conv1 != "Choose" and conv2 != "Choose":
         dist1 = st.number_input(f"What is the original distance in {conv1}s?")
         result = dist1 * weights[conv1] / weights[conv2]
