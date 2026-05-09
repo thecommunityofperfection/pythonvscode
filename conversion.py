@@ -41,7 +41,7 @@ if menu == "Weight":
     conv1 = st.selectbox("Choose starting unit:", ["Choose", "gram", "kilogram", "milligram", "tonne", "ounce", "pound", "stone", "milliliter", "liter", "teaspoon", "tablespoon", "cup", "pint", "quart", "gallon", "fluid ounce"])
     conv2 = st.selectbox("Choose resulting unit:", ["Choose", "gram", "kilogram", "milligram", "tonne", "ounce", "pound", "stone", "milliliter", "liter", "teaspoon", "tablespoon", "cup", "pint", "quart", "gallon", "fluid ounce"])
     if conv1 != "Choose" and conv2 != "Choose":
-        dist1 = st.number_input(f"What is the original distance in {conv1}s?")
+        dist1 = st.number_input(f"What is the original weight in {conv1}s?")
         result = dist1 * weights[conv1] / weights[conv2]
         st.write(f"{dist1} {conv1}s in {conv2}s is: {result}.")
 if menu == "Temperature":
